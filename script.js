@@ -7,13 +7,11 @@
 //  IMPORTANT: Use addEventListener() to wire your
 //  buttons — do NOT add onclick in the HTML.
 // ============================================
-const outShout = document.getElementById("outShout");
-const shoutText = document.getElementById("shoutText");
-
-document.getElementById("btnShout").addEventListener('click', function(){
-    outShout.innerHTML = shoutText.value.toUpperCase();
-    outShout.innerHTML += "!";
-})
+document.getElementById("btnShout").addEventListener("click", function() {
+    let text = document.getElementById("shoutText").value;
+    document.getElementById("outShout").innerHTML =
+        text.toUpperCase() + "!";
+});
 
 // ============================================
 //  WARM-UP: Shout It!
