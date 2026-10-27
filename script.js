@@ -7,6 +7,9 @@
 //  IMPORTANT: Use addEventListener() to wire your
 //  buttons — do NOT add onclick in the HTML.
 // ============================================
+const outShout = document.getElementById("outShout");
+const shoutText = document.getElementById("shoutText");
+
 document.getElementById("btnShout").addEventListener('click', function(){
     outShout.innerHTML = shoutText.value.toUpperCase();
     outShout.innerHTML += "!";
@@ -21,6 +24,7 @@ document.getElementById("btnShout").addEventListener('click', function(){
 // STEP 1: Get the "Shout" button by its ID ("btnShout")
 document.getElementById("btnCalc").addEventListener("click", function() {
     let price = 0;
+
 // STEP 2: Add a click event listener to the button.
 //         Inside the listener function:
 //         a) Get the text from the input with ID "shoutText"
@@ -62,10 +66,12 @@ document.getElementById("btnCalc").addEventListener("click", function() {
 //      Use document.getElementsByName("cb") to get all
 //      topping checkboxes. Loop through and count how
 //      many are .checked. Multiply count by 0.50.
-        const toppings = document.getElementsByName('cb');
-        for(let i = 0; i < toppings.length; i++){
+    const toppings = document.getElementsByName('cb');
+    for(let i = 0; i < toppings.length; i++){
+        if (toppings[i].checked) {
             price += .5;
         }
+    }
 
 //   c) Get the service fee:
 //      Use document.getElementById("serviceSelect").value
@@ -75,17 +81,23 @@ document.getElementById("btnCalc").addEventListener("click", function() {
 //        "dinein"   → 0
 //        "takeout"  → 1.50
 //        "delivery" → 3.00
-    const size = document.getElementsByName("rg");
-     for (let i = 0; i < sizes.length; i++) {
-        if (sizes[i].checked) {
-            price = parseFloat(sizes[i].value);
-        }
+    let service = document.getElementById("serviceSelect").value;
+    let serviceFee = 0;
+
+    if (service === "dinein") {
+        serviceFee = 0;
+    } else if (service === "takeout") {
+        serviceFee = 1.50;
+    } else {
+        serviceFee = 3.00;
     }
+
 //   d) Calculate total: size + toppings + service fee
-let total = price + serviceFee;
+    let total = price + serviceFee;
 
 //   e) Get the customer name from the input with ID "myInput"
-   let name = document.getElementById("myInput").value;
+    // Get the customer name
+    let name = document.getElementById("myInput").value;
     if (name === "") {
         name = "Customer";
     }
@@ -94,7 +106,7 @@ let total = price + serviceFee;
 //      Use .toFixed(2) to format the total.
 //      Example: "Alice, your total is $13.50"
 //      If name is empty, use "Customer" as the default.
-  document.getElementById("myPara").innerHTML =
+ document.getElementById("myPara").innerHTML =
         name + ", your total is $" + total.toFixed(2);
 });
 
