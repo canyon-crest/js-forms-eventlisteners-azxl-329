@@ -8,7 +8,7 @@
 //  buttons — do NOT add onclick in the HTML.
 // ============================================
 document.getElementById("btnShout").addEventListener("click", function() {
-    let text = document.getElementById("shoutText").value;
+    let text = document.getElementById("shoutInput").value;
     document.getElementById("outShout").innerHTML = text.toUpperCase() + "!";
 });
 
