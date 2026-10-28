@@ -9,8 +9,7 @@
 // ============================================
 document.getElementById("btnShout").addEventListener("click", function() {
     let text = document.getElementById("shoutText").value;
-    document.getElementById("outShout").innerHTML =
-        text.toUpperCase() + "!";
+    document.getElementById("outShout").innerHTML = text.toUpperCase() + "!";
 });
 
 // ============================================
